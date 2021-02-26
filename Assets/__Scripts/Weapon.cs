@@ -32,8 +32,8 @@ public class WeaponDefinition
     public Color color = Color.white; // Color of Collar & power-up
     public GameObject projectilePrefab; // Prefab for projectiles
     public Color projectileColor = Color.white;
+    public float shotDelay = 0;
     public float damageOnHit = 0; // Amount of damage caused
-    public float delayBetweenShot = 0;
     public float continuousDamage = 0; // Damage per second (Laser)
     public float velocity = 20; // Speed of projectiles
 }
@@ -107,7 +107,7 @@ public class Weapon : MonoBehaviour
         // If this.gameObject is inactive, return
         if (!gameObject.activeInHierarchy) return;
         // If it hasn't been enough time between shots, return
-        if (Time.time - lastShotTime < def.delayBetweenShots)
+        if (Time.time - lastShotTime < def.shotDelay)
         {
             return;
         }
